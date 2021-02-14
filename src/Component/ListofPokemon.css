@@ -1,0 +1,45 @@
+.row.gap-y {
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+
+.row.gap-y>.col, .row.gap-y>[class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.image-frame {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    margin: auto 0;
+}
+
+.image-frame img {
+    position:absolute;
+    left:0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+.image-frame img.pokemon-image-first{
+    opacity: 1;
+}
+
+.image-frame img.pokemon-image-second{
+    opacity: 0;
+}
+
+.image-frame:hover img.pokemon-image-first{
+    opacity: 0;
+}
+
+.image-frame:hover img.pokemon-image-first+img.pokemon-image-second{
+    opacity: 1;
+}
