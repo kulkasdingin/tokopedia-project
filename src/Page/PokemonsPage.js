@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 // import FetchJS from './Fetch.js'
 // import {getAllPokemons} from './Function/Fetch.js'
-import Pokemons from './Component/ListofPokemon.js'
+import Pokemons from './../Component/ListofPokemon'
 import ls from 'local-storage'
 
-class App extends Component {
+class PokemonsPage extends Component {
     state = {
         query:[],
         pokemons:[]
@@ -84,17 +84,13 @@ class App extends Component {
 
     render (){
         return(
-            <div className="section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <Pokemons pokemonsData={this.state.pokemons} handleCatch={this.handleCatch}/>
-                        </div>
-                    </div>
+            <div className="row">
+                <div className="col-md-12">
+                    <Pokemons pokemonsData={this.state.pokemons} handleCatch={this.handleCatch}/>
                 </div>
             </div>
         )
     }
 }
 
-export default App
+export default PokemonsPage

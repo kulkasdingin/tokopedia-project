@@ -1,4 +1,5 @@
 import ls from 'local-storage';
+import { NavLink } from 'react-router-dom';
 import './ListofPokemon.css';
 
 const TableHeader = () => {
@@ -37,14 +38,19 @@ const PokemonsList = (props) => {
             <div className="col-6 col-md-3" key={index}>
                 <div className="card">
                     <div className="image-frame">
-                        <img className="card-img-top pokemon-image-first" src={row.image}
+                        <NavLink to={{ 
+                            pathname:'/pokemon-detail/'+row.name,
+                            state: {image:row.image}
+                            }}>
+                            <img className="card-img-top pokemon-image-first" src={row.image}
                             // onMouseEnter={e => {
-                            //     let id = zeroPad(row.id,3);
-                            //     e.currentTarget.src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'
-                            // }}
-                            // onMouseLeave={e => e.currentTarget.src=row.image}
-                            ></img>
-                        <img className="card-img-top pokemon-image-second" src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'}></img>
+                                //     let id = zeroPad(row.id,3);
+                                //     e.currentTarget.src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'
+                                // }}
+                                // onMouseLeave={e => e.currentTarget.src=row.image}
+                                ></img>
+                        </NavLink>
+                        {/* <img className="card-img-top pokemon-image-second" src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'}></img> */}
                     </div>
                     <div className="card-body">
                         <h5 className="card-title text-capitalize">{row.name}</h5>

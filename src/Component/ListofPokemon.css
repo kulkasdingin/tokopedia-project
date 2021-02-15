@@ -12,14 +12,20 @@
     text-transform: capitalize;
 }
 
-.image-frame {
+/* .image-frame {
     position: relative;
-    height: 250px;
+    height: 150px;
     width: 100%;
     margin: auto 0;
 }
 
-.image-frame img {
+@media (min-width:768px) {
+    .image-frame {
+        height: 250px;
+    }
+} */
+
+/* .image-frame img {
     position:absolute;
     left:0;
     -webkit-transition: opacity .5s ease-in-out;
@@ -42,4 +48,4 @@
 
 .image-frame:hover img.pokemon-image-first+img.pokemon-image-second{
     opacity: 1;
-}
+} */
