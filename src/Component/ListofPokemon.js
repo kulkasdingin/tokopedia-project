@@ -42,15 +42,8 @@ const PokemonsList = (props) => {
                             pathname:'/pokemon-detail/'+row.name,
                             state: {image:row.image}
                             }}>
-                            <img className="card-img-top pokemon-image-first" src={row.image}
-                            // onMouseEnter={e => {
-                                //     let id = zeroPad(row.id,3);
-                                //     e.currentTarget.src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'
-                                // }}
-                                // onMouseLeave={e => e.currentTarget.src=row.image}
-                                ></img>
+                            <img className="card-img-top pokemon-image-first" src={row.image}></img>
                         </NavLink>
-                        {/* <img className="card-img-top pokemon-image-second" src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+id+'.png'}></img> */}
                     </div>
                     <div className="card-body">
                         <h5 className="card-title text-capitalize">{row.name}</h5>
@@ -58,16 +51,6 @@ const PokemonsList = (props) => {
                     </div>
                 </div>
             </div>
-            // <tr key={index}>
-            //     <td><img className="img-fluid" srcSet={row.image}></img></td>
-            //     <td>{row.name}</td>
-            //     <td>{row.own || 0}</td>
-            //     <td>
-            //         <button className="btn btn-primary" onClick={() => catchPokemon(row, props)}>Catch</button>
-            //         <button className="btn btn-primary mt-1 mt-md-0 ml-0 ml-md-1" onClick={() => releasePokemon(row,props)}>Release</button>
-            //         {/* <button className="btn btn-primary mt-1" onClick={()=>ls.clear()}>Clear</button> */}
-            //     </td>
-            // </tr>
         )
     })
 
@@ -80,16 +63,9 @@ const Pokemons = (props) => {
     const {pokemonsData, handleCatch} = props
 
     return (
-        <div className="row gap-y mt-3">
+        <div className="row gap-y">
             <PokemonsList pokemonsData={pokemonsData} handleCatch={handleCatch}/>
         </div>
-        // <table className="table">
-        //     <TableHeader/>
-        //     {
-        //         pokemonsData &&
-        //         <TableBody pokemonsData={pokemonsData} handleCatch={handleCatch}/>
-        //     }
-        // </table>
     )
 }
 

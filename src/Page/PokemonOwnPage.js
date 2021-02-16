@@ -12,10 +12,10 @@ class PokemonOwnPage extends Component {
     }
 
     ownedPokemonInit () {
-        let ownedPokemonNameWithId = ls.get('pokemon_own');
+        let ownedPokemonNameWithId = (ls.get('pokemon_own') ? ls.get('pokemon_own') : []);
 
         let temp = ownedPokemonNameWithId.map((row, index)=> {
-            return row.split("-")
+            return row.split("__")
         })
 
         let pokemon = temp.map((row,index)=>{
@@ -86,8 +86,8 @@ class PokemonOwnPage extends Component {
                     ls.set(pokemon, pokemonOwnedList)
                     if (pokemonOwnedList.length<1) {
                         let ownedPokemonNameWithId = ls.get('pokemon_own');
-                        ownedPokemonNameWithId.splice(ownedPokemonNameWithId.indexOf(pokemon+'-'+id),1)
-                        console.log(pokemon+'-'+id)
+                        ownedPokemonNameWithId.splice(ownedPokemonNameWithId.indexOf(pokemon+'__'+id),1)
+                        console.log(pokemon+'__'+id)
                         ls.set('pokemon_own', ownedPokemonNameWithId);
                     }
                     ls.set(pokemon+'_own', pokemonOwnedList.length)
@@ -103,6 +103,15 @@ class PokemonOwnPage extends Component {
     }
 
     PokemonsList = () => {
+
+        if (this.state.pokemonsOwned.length==0) {
+            return (
+                <div className="col-12 text-center">
+                    Currently you don't have any pokemon with you.<br/>
+                    What are you doing? Go catch em all now~!
+                </div>
+            )
+        }
 
         const rows = this.state.pokemonsOwned.map((row, index) => {
             return (

@@ -146,9 +146,9 @@ class PokemonDetailPage extends Component {
         if (temp.indexOf(this.state.pokemonCatchedName)<0) {
             temp.push(this.state.pokemonCatchedName);
             let owned_pokemon = (ls.get('pokemon_own')==undefined ? []: ls.get('pokemon_own'));
-            if (owned_pokemon.indexOf(this.state.pokemon.name+'-'+this.state.pokemon.id)<0) {
+            if (owned_pokemon.indexOf(this.state.pokemon.name+'__'+this.state.pokemon.id)<0) {
                 console.log(owned_pokemon);
-                owned_pokemon.push(this.state.pokemon.name+'-'+this.state.pokemon.id);
+                owned_pokemon.push(this.state.pokemon.name+'__'+this.state.pokemon.id);
                 ls.set('pokemon_own', owned_pokemon);
                 console.log(ls.get('pokemon_own'))
             }
@@ -184,27 +184,6 @@ class PokemonDetailPage extends Component {
         
         return (
             <div className="row p-3">
-                <div className="col-md-6 column-pokemon-data pb-3">
-                    <div className="row gap-y">
-                        <div className="col-md-4 offset-md-4 text-center">
-                            <img src={this.props.location.state && this.props.location.state.image || ''} className="img-fluid w-100"></img>
-                        </div>
-                        <div className="col-12 text-capitalize text-center">
-                            <h3>{this.state.pokemon.name}</h3>
-                            {
-                                this.state.pokemon.types &&
-                                <this.PokemonType/>
-                            }
-                        </div>
-                        <div className="col-12 text-center text-capitalize">
-                            <h4>moves</h4>
-                            {
-                                this.state.pokemon.moves &&
-                                <this.PokemonMove/>
-                            }
-                        </div>
-                    </div>
-                </div>
                 <div className="col-md-6 column-pokemon-catching-range mt-3 mt-md-0 pb-5">
                     <div className="row pb-5 row-pokemon-catching-range">
                         <div className="col-12 text-capitalize text-center mt-3">
@@ -228,7 +207,27 @@ class PokemonDetailPage extends Component {
                         </div>
                     </div>
                 </div>
-                
+                <div className="col-md-6 column-pokemon-data pb-3">
+                    <div className="row gap-y">
+                        <div className="col-md-4 offset-md-4 text-center">
+                            <img src={this.props.location.state && this.props.location.state.image || ''} className="img-fluid w-100"></img>
+                        </div>
+                        <div className="col-12 text-capitalize text-center">
+                            <h3>{this.state.pokemon.name}</h3>
+                            {
+                                this.state.pokemon.types &&
+                                <this.PokemonType/>
+                            }
+                        </div>
+                        <div className="col-12 text-center text-capitalize">
+                            <h4>moves</h4>
+                            {
+                                this.state.pokemon.moves &&
+                                <this.PokemonMove/>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

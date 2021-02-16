@@ -8,8 +8,33 @@ import {
 import PokemonsPage from './Page/PokemonsPage'
 import PokemonDetailPage from './Page/PokemonDetailPage'
 import PokemonOwnPage from "./Page/PokemonOwnPage";
-
+import PatchPage from "./Page/PatchPage";
+import ls from 'local-storage'
+import swal from '@sweetalert/with-react'
 class Main extends Component {
+    handleReset() {
+        swal("Are you sure?", "Your game will reset, this can be useful if you want to catch from scratch or countering error in capturing GMAX Pokemon", {
+            buttons: {
+                cancel: "Cancel",
+                reset: {
+                    text: 'Proceed',
+                    value: 'reset'
+                }
+            }
+        })
+        .then((value)=> {
+            switch(value) {
+                case "reset":
+                    ls.clear();
+                    swal("Game has been successfully reset")
+                    .then(()=> window.location.reload());                    
+                    break;
+
+                default:
+                    swal('Action canceled! Game will not reset')
+            }
+        })
+    }
     render() {
         return (
             <Router>
@@ -23,7 +48,9 @@ class Main extends Component {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mr-auto">
                                     <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
-                                    <li className="nav-item w-100"><Link to="/pokemon-own" className="nav-link">Pokemon Own</Link></li>
+                                    <li className="nav-item"><Link to="/pokemon-own" className="nav-link">Pokemon Own</Link></li>
+                                    <li className="nav-item"><span className="nav-link cursor-pointer" onClick={()=>this.handleReset()}>Reset Game</span></li>
+                                    <li className="nav-item"><Link to="/patch" className="nav-link">Patch Note</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -36,6 +63,9 @@ class Main extends Component {
                                 </Route>
                                 <Route path="/pokemon-own">
                                     <PokemonOwnPage/>
+                                </Route>
+                                <Route path="/patch">
+                                    <PatchPage/>
                                 </Route>
                                 <Route path="/">
                                     <PokemonsPage/>
