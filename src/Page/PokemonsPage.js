@@ -65,7 +65,7 @@ class PokemonsPage extends Component {
             temp_pokemon[id] = row.id
             temp_pokemon[image] = row.image
             temp_pokemon[name] = row.name
-            temp_pokemon[own] = ls.get(row.name)
+            temp_pokemon[own] = ls.get(row.name+'_own')
             temp.push(temp_pokemon)
         })
 

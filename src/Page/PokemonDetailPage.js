@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import './PokemonDetailPage.css'
 import background from './Image/pokemonbackground.png'
 import pokeball from './Image/pokeball.png'
+import ls from 'local-storage'
+import swal from '@sweetalert/with-react'
 
 class PokemonDetailPage extends Component {
     constructor(props){
@@ -13,6 +15,7 @@ class PokemonDetailPage extends Component {
             pokeballClass: 'pokeball',
             catchDisabled: false,
             isCatched: false,
+            isNameTaken: false,
             pokemonCatchedName: '',
         };
     }
@@ -121,13 +124,13 @@ class PokemonDetailPage extends Component {
         setTimeout(() => this.setState({pokeballClass:"pokeball-catch after drop"}),6450);
         setTimeout(() => {
             let chance = Math.random();
-            if (chance >= .50) {
+            if (chance >= .05) {
                 this.setState({
                     isCatched: true
                 })
-                alert('Catch')
+                swal("Success!", this.state.pokemon.name + " Has Been Succesfully Caught", "success")
             } else {
-                alert('fail')
+                swal("Failed!", this.state.pokemon.name + " resist the catch attemp!", "error")
                 this.setState({
                     pokeballClass:"pokeball",
                     pokemonClass:"pokemon",
@@ -138,7 +141,31 @@ class PokemonDetailPage extends Component {
     }
 
     submitName = () => {
-
+        let temp = (ls.get(this.state.pokemon.name)==undefined ? []: ls.get(this.state.pokemon.name));
+        console.log(temp);
+        if (temp.indexOf(this.state.pokemonCatchedName)<0) {
+            temp.push(this.state.pokemonCatchedName);
+            let owned_pokemon = (ls.get('pokemon_own')==undefined ? []: ls.get('pokemon_own'));
+            if (owned_pokemon.indexOf(this.state.pokemon.name+'-'+this.state.pokemon.id)<0) {
+                console.log(owned_pokemon);
+                owned_pokemon.push(this.state.pokemon.name+'-'+this.state.pokemon.id);
+                ls.set('pokemon_own', owned_pokemon);
+                console.log(ls.get('pokemon_own'))
+            }
+            ls.set(this.state.pokemon.name, temp);
+            ls.set(this.state.pokemon.name+'_own', temp.length)
+            swal("Success!", this.state.pokemonCatchedName+ " Has Been Succesfully Caught", "success")
+            this.setState({
+                isNameTaken: false, 
+                isCatched: false, 
+                catchDisabled:false, 
+                pokeballClass:"pokeball",
+                pokemonClass:"pokemon",
+                pokemonCatchedName: '', 
+            })
+        } else {
+            this.setState({isNameTaken: true})
+        }
     }
 
     handleChange = (event) => {
@@ -193,6 +220,7 @@ class PokemonDetailPage extends Component {
                         <div className={'col-12 mt-3 text-center ' + (this.state.isCatched ? 'd-block' : 'd-none')}>
                                 <label className="form-label">Name your Pokemon!</label>
                                 <input type="email" className="form-control" name="pokemonCatchedName" value={this.state.pokemonCatchedName} onChange={this.handleChange}/>
+                                <label className={'form-label text-red small ' + (this.state.isNameTaken ? 'd-block': 'd-none')}>name already taken!</label>
                                 <button className="normal text-capitalize pokemon-move mt-3" onClick={()=> this.submitName()}>Save</button>
                         </div>
                         <div className={'col-12 mt-3 text-center ' + (this.state.isCatched ? 'd-none' : 'd-block')}>

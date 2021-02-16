@@ -231,6 +231,7 @@ button.pokemon-move {
 
 }
 
+
 @keyframes shake {
     0% { transform: translate(-50%)rotate(0deg); }
     10% { transform: translate(-40%) rotate(-1deg); }
@@ -244,3 +245,15 @@ button.pokemon-move {
     90% { transform: translate(-50%)rotate(0deg); }
     100% { transform: translate(-50%)rotate(0deg); }
   }
+
+.text-red {
+    color: rgb(190, 0, 0)
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.mt-6 {
+    margin-top: 4rem;
+}

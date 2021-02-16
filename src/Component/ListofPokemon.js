@@ -54,7 +54,7 @@ const PokemonsList = (props) => {
                     </div>
                     <div className="card-body">
                         <h5 className="card-title text-capitalize">{row.name}</h5>
-                        <p className="card-text">{row.own || 0}</p>
+                        <p className="card-text">You own {row.own || 0} of this Pokemon</p>
                     </div>
                 </div>
             </div>
