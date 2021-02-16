@@ -124,7 +124,7 @@ class PokemonDetailPage extends Component {
         setTimeout(() => this.setState({pokeballClass:"pokeball-catch after drop"}),6450);
         setTimeout(() => {
             let chance = Math.random();
-            if (chance >= .05) {
+            if (chance >= .5) {
                 this.setState({
                     isCatched: true
                 })
@@ -184,7 +184,7 @@ class PokemonDetailPage extends Component {
         
         return (
             <div className="row p-3">
-                <div className="col-md-6 column-pokemon-catching-range mt-3 mt-md-0 pb-5">
+                <div className="col-md-6 column-pokemon-catching-range mt-3 mt-md-0 pb-4">
                     <div className="row pb-5 row-pokemon-catching-range">
                         <div className="col-12 text-capitalize text-center mt-3">
                             <h1>Catching Range</h1>

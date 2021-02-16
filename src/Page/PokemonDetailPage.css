@@ -108,13 +108,13 @@ button.pokemon-move {
 
 .column-pokemon-data {
     padding: .5rem;
-    border-radius: 1pokemonrem;
+    border-radius: 1rem;
     border: 3px solid #d0cbd0;
 }
 
 .row-pokemon-catching-range{
     padding: .5rem;
-    border-radius: 1pokemonrem;
+    border-radius: 1rem;
     border: 3px solid #d0cbd0;
 }
 
@@ -123,6 +123,7 @@ button.pokemon-move {
     /* border-radius: 2.5rem;
     border: 3px solid #d0cbd0; */
 }
+
 
 @media (min-width:768px) {
     .column-pokemon-catching-range {

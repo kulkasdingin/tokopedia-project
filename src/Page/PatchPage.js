@@ -7,6 +7,14 @@ class PatchPage extends Component {
                 <div className="col-12">
                     <p>Patch Note</p>
                     <ul>
+                        <li>v1.0.1 Fix bug after reset game</li>
+                        <li>Change log</li>
+                        <ul>
+                            <li>Change window.location.refresh to window.location.href after the game reset</li>
+                        </ul>
+                    </ul>
+                    <br/>
+                    <ul>
                         <li>v1.0.0 Release Full Working Feature</li>
                         <li>Known bug</li>
                         <ul>

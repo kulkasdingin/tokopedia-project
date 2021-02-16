@@ -27,7 +27,7 @@ class Main extends Component {
                 case "reset":
                     ls.clear();
                     swal("Game has been successfully reset")
-                    .then(()=> window.location.reload());                    
+                    .then(()=> window.location.href="/");                    
                     break;
 
                 default:
@@ -39,7 +39,7 @@ class Main extends Component {
         return (
             <Router>
                 <div>
-                    <nav id="header" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                    <nav id="header" className="navbar navbar-expand-md navbar-dark bg-dark fixed-top pt-2 pb-2">
                         <div className="container-fluid flex-wrap flex-md-nowrap">
                             <Link to="/" className="navbar-brand" >Tokopedia Project</Link>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
